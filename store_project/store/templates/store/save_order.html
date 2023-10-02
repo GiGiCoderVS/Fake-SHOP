@@ -1,0 +1,8 @@
+{% extends "store/index.html" %}
+{% block title %}
+{{product.title}}
+{% endblock %}
+{% block content %}
+<h1>Hello, {{order.username}}! Product {{order.product.title}} for price 
+{{order.product.price}} accepted!</h1>
+{% endblock %}

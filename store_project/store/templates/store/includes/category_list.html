@@ -1,0 +1,7 @@
+<ul class="list-group mb-3">
+    {% for category in product.categories.all %}
+    <li class="list-group-item">
+        <a href="{% url 'category_detail_url' pk=category.pk %}">{{category.title}}</a>
+    </li>
+    {% endfor %}
+</ul>

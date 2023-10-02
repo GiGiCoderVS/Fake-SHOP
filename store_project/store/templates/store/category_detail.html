@@ -1,0 +1,10 @@
+{% extends "store/index.html" %}
+{% block content %}
+<div class="row justify-content-center">
+{% for product in category.products.all %}
+{% include "store/includes/product_home.html" %}
+{% endfor %}
+  
+
+</div>
+{% endblock %}

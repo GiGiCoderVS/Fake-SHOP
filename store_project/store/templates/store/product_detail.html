@@ -1,0 +1,46 @@
+{% extends "store/index.html" %}
+{% block title %}
+Product {{product.title}}
+{% endblock %}
+{% block content %}
+<div class="card mb-3">
+    {% include "store/includes/image.html" %}
+    <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.info}}</p>
+        <p class="card-text">{{product.price}}</p>
+        {% include "store/includes/category_list.html" %}
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#order">
+            Buy now
+        </button>
+
+    </div>
+</div>
+<div class="modal fade" id="order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{product.title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action = "/save_order" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" name="username" class="form-label">Your username</label>
+                        <input type="text" name="username" class="form-control" id="username" required
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userNumber" class="form-label">Phone number</label>
+                        <input type="tel" name="phone" class="form-control" required id="userNumber">
+                    </div>
+                    <input type="hidden" value="{{product.pk}}" readonly name="product_id">
+                    <button type="submit" class="btn btn-primary">Order it</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
