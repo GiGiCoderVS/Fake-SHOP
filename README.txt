@@ -37,3 +37,4 @@ python manage.py createsuperuser
 
 #Working IMAGES
 pip install pillow
+
